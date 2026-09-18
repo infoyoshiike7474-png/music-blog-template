@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+}
+const { posts } = Astro.props;
+---
+{posts.length > 0 && (
+  <section class="mt-16 border-t border-neutral-200 pt-8">
+    <h2 class="text-lg font-bold mb-4">関連記事</h2>
+    <ul class="space-y-3">
+      {posts.map((post) => (
+        <li>
+          <a href={`/posts/${post.slug}/`} class="text-sm font-medium hover:underline">
+            {post.data.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

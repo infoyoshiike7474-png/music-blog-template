@@ -1,0 +1,24 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+interface Props {
+  headings: Heading[];
+}
+const { headings } = Astro.props;
+const items = headings.filter((h) => h.depth === 2);
+---
+{items.length >= 2 && (
+  <nav class="mb-8 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm" aria-label="目次">
+    <p class="font-semibold mb-2">目次</p>
+    <ol class="space-y-1 list-decimal list-inside text-neutral-700">
+      {items.map((h) => (
+        <li>
+          <a href={`#${h.slug}`} class="hover:underline">{h.text}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

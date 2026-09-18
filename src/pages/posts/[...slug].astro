@@ -1,0 +1,80 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import RelatedPosts from '../../components/RelatedPosts.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => {
+    const related = posts
+      .filter((p) => p.slug !== post.slug && p.data.tags.some((t) => post.data.tags.includes(t)))
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+      .slice(0, 3);
+    return {
+      params: { slug: post.slug },
+      props: { post, related },
+    };
+  });
+}
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  related: CollectionEntry<'posts'>[];
+}
+const { post, related } = Astro.props;
+const { title, description, pubDate, updatedDate, image, imageAlt, tags, affiliate } = post.data;
+const { Content, headings } = await post.render();
+const formatted = pubDate.toLocaleDateString('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  image: image ? [image] : undefined,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  keywords: tags.join(', '),
+  author: { '@type': 'Organization', name: 'MOMA HEIGHTS MUSIC' },
+  publisher: { '@type': 'Organization', name: 'MOMA HEIGHTS MUSIC' },
+};
+---
+<BaseLayout title={title} description={description} image={image} jsonLd={jsonLd}>
+  <article>
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold tracking-tight">{title}</h1>
+      <div class="flex items-center gap-3 mt-3 text-sm text-neutral-500">
+        <time datetime={pubDate.toISOString()}>{formatted}</time>
+        {updatedDate && <span>(更新: {updatedDate.toLocaleDateString('ja-JP')})</span>}
+      </div>
+      {tags.length > 0 && (
+        <ul class="flex flex-wrap gap-2 mt-3">
+          {tags.map((tag) => (
+            <li>
+              <a
+                href={`/tags/${tag}/`}
+                class="text-xs px-2 py-1 bg-neutral-100 rounded-full hover:bg-neutral-200"
+              >
+                #{tag}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </header>
+    {image && <img src={image} alt={imageAlt ?? title} class="w-full rounded-lg mb-8" />}
+    {affiliate && <AffiliateDisclosure />}
+    {description && <p class="text-lg text-neutral-700 leading-relaxed mb-8">{description}</p>}
+    <TableOfContents headings={headings} />
+    <div class="prose prose-neutral max-w-none">
+      <Content />
+    </div>
+    <RelatedPosts posts={related} />
+  </article>
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  description?: string;
+  pubDate: Date;
+  image?: string;
+  imageAlt?: string;
+  tags: string[];
+}
+const { slug, title, description, pubDate, image, imageAlt, tags } = Astro.props;
+const formatted = pubDate.toLocaleDateString('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+<article class="group">
+  <a href={`/posts/${slug}/`} class="block">
+    {image && (
+      <img
+        src={image}
+        alt={imageAlt ?? title}
+        class="w-full aspect-video object-cover rounded-lg mb-3"
+        loading="lazy"
+      />
+    )}
+    <h2 class="text-xl font-semibold group-hover:underline">{title}</h2>
+    {description && <p class="text-neutral-600 mt-1 text-sm">{description}</p>}
+    <div class="flex flex-wrap items-center gap-3 mt-2 text-xs text-neutral-500">
+      <time datetime={pubDate.toISOString()}>{formatted}</time>
+      {tags.length > 0 && (
+        <ul class="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <li class="px-2 py-0.5 bg-neutral-100 rounded-full">#{tag}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </a>
+</article>
