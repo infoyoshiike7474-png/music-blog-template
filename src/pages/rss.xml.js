@@ -7,8 +7,8 @@ export async function GET(context) {
   );
 
   return rss({
-    title: 'MOMA HEIGHTS MUSIC',
-    description: 'モマハイツ発、音楽ニュース＆コラム',
+    title: 'Music Blog',
+    description: '音楽ニュース＆コラム',
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,
