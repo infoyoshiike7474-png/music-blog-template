@@ -134,12 +134,12 @@ npm run new-post -- --json data.json
 
 ## Cloudflare Pages への自動デプロイ（無料）
 
-Cloudflare Pages は静的サイトなら無料枠で運用できます。GitHub Actions（`.github/workflows/deploy.yml`）
-が `main` ブランチへの push をトリガーに、ビルドしてデプロイします。
+Cloudflare Pages は静的サイトなら無料枠で運用できます。Cloudflareの「Connect GitHub」機能で
+GitHubリポジトリと直接連携する方式を採用しており、APIトークンやSecretsの設定は不要です。
 
 ### セットアップ手順
 
-1. **GitHubリポジトリを作成してこのプロジェクトをpush**
+1. **GitHubリポジトリを作成してこのプロジェクトをpush**（済んでいれば不要）
 
    ```bash
    git init
@@ -151,35 +151,25 @@ Cloudflare Pages は静的サイトなら無料枠で運用できます。GitHub
    ```
 
 2. **Cloudflareダッシュボードで Pages プロジェクトを作成**
-   - [Cloudflare Pages](https://dash.cloudflare.com/) にログイン（無料アカウントでOK）
-   - Workers & Pages → Create → Pages → "Connect to Git" は使わず、
-     GitHub Actions からのデプロイ専用プロジェクトとして作成してOKです
-     （最初のデプロイ時に自動作成されることもあります）
-   - プロジェクト名を決め、`.github/workflows/deploy.yml` の `projectName` を
-     その名前に合わせて書き換えてください
+   - [Cloudflare](https://dash.cloudflare.com/) にログイン（無料アカウントでOK）
+   - 左メニュー「Workers & Pages」→「Create application」
+   - 「Connect GitHub」を選択し、GitHubアカウントを認証・連携
+   - リポジトリ一覧から対象リポジトリを選択
 
-3. **APIトークンとアカウントIDを取得**
-   - Account ID: Cloudflareダッシュボード右下、または対象ドメインの概要ページに表示
-   - API Token: [My Profile → API Tokens](https://dash.cloudflare.com/profile/api-tokens) →
-     "Create Token" → "Edit Cloudflare Workers" or "Cloudflare Pages" テンプレートを使用
+3. **ビルド設定**
+   - Framework preset: **Astro**（自動検出されることが多い）
+   - Build command: `npm run build`
+   - Build output directory: `dist`
+   - 上記が自動入力されない場合は手動で入力してください
 
-4. **GitHubリポジトリにSecretsを登録**
+4. **「Save and Deploy」をクリック**
 
-   リポジトリの Settings → Secrets and variables → Actions → New repository secret
-
-   - `CLOUDFLARE_API_TOKEN`
-   - `CLOUDFLARE_ACCOUNT_ID`
-
-5. **`main` ブランチへpushすると自動デプロイされます**
-
-   以降は記事を追加して push するだけで、ビルド〜デプロイが自動実行されます。
+   以降は `main` ブランチに push するだけで、Cloudflareが自動でビルド・デプロイします。
 
 ### 費用について
 
 - Cloudflare Pages: 静的サイトのホスティングは無料枠内で運用可能（ビルド回数・帯域とも
   個人ブログ用途では無料枠で十分なことが多いです）
-- GitHub Actions: パブリックリポジトリは無料。プライベートリポジトリも
-  月2,000分まで無料枠あり
 - 独自ドメインを使わない場合、Cloudflareが発行する `*.pages.dev` のURLをそのまま無料で使えます
 
 ## タグページ
