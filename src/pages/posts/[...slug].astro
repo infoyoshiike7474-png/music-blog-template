@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import AiEditorNote from '../../components/AiEditorNote.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import RelatedPosts from '../../components/RelatedPosts.astro';
 
@@ -69,6 +70,7 @@ const jsonLd = {
       )}
     </header>
     {image && <img src={image} alt={imageAlt ?? title} class="w-full rounded-lg mb-8" />}
+    <AiEditorNote />
     {affiliate && <AffiliateDisclosure />}
     {description && <p class="text-lg text-neutral-700 leading-relaxed mb-8">{description}</p>}
     <TableOfContents headings={headings} />

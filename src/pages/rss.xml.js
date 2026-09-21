@@ -8,7 +8,7 @@ export async function GET(context) {
 
   return rss({
     title: 'AKARUMI SONGS',
-    description: 'AKARUMI MUSICが運営する音楽ニュース＆コラム',
+    description: 'AIが選ぶ、音楽ニュース＆コラム（運営: AKARUMI MUSIC）',
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,

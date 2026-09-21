@@ -9,7 +9,10 @@ const posts = (await getCollection('posts', ({ data }) => !isProd || !data.draft
 );
 ---
 <BaseLayout title="Home">
-  <h1 class="text-2xl font-bold mb-8">最新の記事</h1>
+  <h1 class="text-2xl font-bold mb-2">AIが選ぶ、最新の注目記事</h1>
+  <p class="text-sm text-neutral-500 mb-8">
+    SNSやストリーミングのデータをもとに、AIが独自に選定・分析しています。
+  </p>
   <div class="space-y-10">
     {posts.map((post) => (
       <PostCard
