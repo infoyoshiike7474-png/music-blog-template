@@ -5,7 +5,7 @@ pubDate: 2026-09-17
 image: "https://placehold.co/1200x630/1a1a1a/ffffff?text=MUSIC+BLOG"
 imageAlt: "サンプルのアイキャッチ画像"
 tags: ["お知らせ", "サンプル"]
-draft: false
+draft: true
 ---
 
 これはサンプル記事です。`src/content/posts/` 配下に Markdown ファイル（`.md`）を追加すると、自動的にトップページや記事ページに反映されます。
