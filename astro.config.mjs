@@ -3,8 +3,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  // 独自ドメインやCloudflare PagesのURLに合わせて変更してください
-  site: 'https://example.pages.dev',
+  // 独自ドメインを取得したら、こちらもそのドメインに変更してください
+  site: 'https://music-blog-template.akarumi.workers.dev',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

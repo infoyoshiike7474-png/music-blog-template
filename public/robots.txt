@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.pages.dev/sitemap-index.xml
+Sitemap: https://music-blog-template.akarumi.workers.dev/sitemap-index.xml
