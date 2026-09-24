@@ -12,6 +12,8 @@ const posts = defineCollection({
     imageAlt: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    // SpotifyアーティストIDを指定すると、公式埋め込みプレイヤーを記事内に表示する
+    spotifyArtistId: z.string().optional(),
     // アフィリエイトリンクを含む記事は true にする（景品表示法のPR表記対応）
     affiliate: z.boolean().default(false),
   }),

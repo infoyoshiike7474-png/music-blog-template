@@ -5,6 +5,7 @@ import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import AiEditorNote from '../../components/AiEditorNote.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import RelatedPosts from '../../components/RelatedPosts.astro';
+import SpotifyEmbed from '../../components/SpotifyEmbed.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -25,7 +26,7 @@ interface Props {
   related: CollectionEntry<'posts'>[];
 }
 const { post, related } = Astro.props;
-const { title, description, pubDate, updatedDate, image, imageAlt, tags, affiliate } = post.data;
+const { title, description, pubDate, updatedDate, image, imageAlt, tags, affiliate, spotifyArtistId } = post.data;
 const { Content, headings } = await post.render();
 const formatted = pubDate.toLocaleDateString('ja-JP', {
   year: 'numeric',
@@ -70,6 +71,7 @@ const jsonLd = {
       )}
     </header>
     {image && <img src={image} alt={imageAlt ?? title} class="w-full rounded-lg mb-8" />}
+    {spotifyArtistId && <SpotifyEmbed artistId={spotifyArtistId} />}
     <AiEditorNote />
     {affiliate && <AffiliateDisclosure />}
     {description && <p class="text-lg text-neutral-700 leading-relaxed mb-8">{description}</p>}
