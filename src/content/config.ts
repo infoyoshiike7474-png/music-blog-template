@@ -16,6 +16,8 @@ const posts = defineCollection({
     spotifyArtistId: z.string().optional(),
     // アフィリエイトリンクを含む記事は true にする（景品表示法のPR表記対応）
     affiliate: z.boolean().default(false),
+    // 運営関係者が携わるアーティストを含む記事は true にする（利益相反の開示対応）
+    operatorAffiliated: z.boolean().default(false),
   }),
 });
 

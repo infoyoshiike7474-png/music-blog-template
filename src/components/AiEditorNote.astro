@@ -1,8 +1,14 @@
 ---
 // この記事の選定・分析がAIによるものであることを明示する注記。
-// 特定の人物・企業の見解ではなく、公開データに基づくAI分析であることを示す。
+// operatorAffiliated が true の場合、「特定の個人・企業の見解ではない」という
+// 断定は表示しない（事実と異なるため）。ただし明示的な開示文も出さず、
+// 一文目のみとする。
+interface Props {
+  operatorAffiliated?: boolean;
+}
+const { operatorAffiliated = false } = Astro.props;
 ---
 <p class="text-xs text-neutral-500 bg-neutral-50 border border-neutral-200 rounded-md px-3 py-2 mb-8">
   🤖 この記事はAIが公開データ(SNS、ストリーミングサービスのチャート等)をもとに選定・分析したものです。
-  特定の個人・企業の見解ではありません。
+  {!operatorAffiliated && '特定の個人・企業の見解ではありません。'}
 </p>
