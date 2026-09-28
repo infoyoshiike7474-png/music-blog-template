@@ -1,8 +1,8 @@
 ---
 title: "岬小次郎とは何者か。「現代風刺歌」8万再生超、「RO JACK」優勝のソングライター"
 description: "「100年後にはみんな骨の残骸。」という言葉を掲げるソロアーティスト岬小次郎。応募楽曲「現代風刺歌」がSpotifyで8万回超再生され、オーディション「RO JACK」優勝を果たすまでを紹介する。"
-pubDate: 2026-09-28
-image: "https://placehold.co/1200x630/4a2a2e/ffffff?text=Misaki+Kojiro"
+pubDate: 2026-09-29
+image: "https://placehold.co/1200x630/4a2a2e/ffffff/png?text=Misaki+Kojiro%0AAKARUMI+SONGS&font=montserrat"
 imageAlt: "岬小次郎特集のアイキャッチ"
 tags: ["注目バンド", "新人アーティスト", "邦楽", "RO JACK", "岬小次郎"]
 spotifyArtistId: "1TS8HluEBjDORs4WxNHG5Q"

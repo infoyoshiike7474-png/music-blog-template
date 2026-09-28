@@ -2,7 +2,7 @@
 title: "サンプル記事：音楽ニュース・コラムブログへようこそ"
 description: "このテンプレートで最初から用意されているサンプル記事です。"
 pubDate: 2026-09-17
-image: "https://placehold.co/1200x630/1a1a1a/ffffff?text=MUSIC+BLOG"
+image: "https://placehold.co/1200x630/1a1a1a/ffffff/png?text=AKARUMI+SONGS&font=montserrat"
 imageAlt: "サンプルのアイキャッチ画像"
 tags: ["お知らせ", "サンプル"]
 draft: true

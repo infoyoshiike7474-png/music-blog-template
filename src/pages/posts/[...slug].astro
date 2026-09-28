@@ -47,7 +47,16 @@ const jsonLd = {
   publisher: { '@type': 'Organization', name: 'AKARUMI MUSIC' },
 };
 ---
-<BaseLayout title={title} description={description} image={image} jsonLd={jsonLd}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  jsonLd={jsonLd}
+  type="article"
+  publishedTime={pubDate.toISOString()}
+  modifiedTime={(updatedDate ?? pubDate).toISOString()}
+  tags={tags}
+>
   <article>
     <header class="mb-8">
       <h1 class="text-3xl font-bold tracking-tight">{title}</h1>

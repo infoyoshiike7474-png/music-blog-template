@@ -2,7 +2,7 @@
 title: "【2026年9月】今、注目の新人アーティスト2組｜らそんぶる・モマハイツ"
 description: "結成1年足らずでSOLD OUT連発のガールズバンド「らそんぶる」と、新曲「ヘヴン」を本日リリースしたオルタナティブJ-POPバンド「モマハイツ」。2026年9月時点で注目したい新人2組を紹介する。"
 pubDate: 2026-09-25
-image: "https://placehold.co/1200x630/ff8c28/ffffff?text=RISING+ARTISTS+2026"
+image: "https://placehold.co/1200x630/ff8c28/ffffff/png?text=RISING+ARTISTS%0AAKARUMI+SONGS&font=montserrat"
 imageAlt: "2026年9月注目の新人アーティスト特集のアイキャッチ"
 tags: ["注目バンド", "新人アーティスト", "邦楽", "らそんぶる", "モマハイツ"]
 operatorAffiliated: true

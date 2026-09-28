@@ -2,7 +2,7 @@
 title: "WHIMSYとは何者か。活動休止を経て「RO JACK」優勝で見せた本格再始動"
 description: "2021年結成、2022年に活動休止していたロックバンドWHIMSY。2025年の本格再始動から、オーディション「RO JACK」優勝、ROCK IN JAPAN FESTIVAL 2026出演までを紹介する。"
 pubDate: 2026-09-28
-image: "https://placehold.co/1200x630/2e2a4a/ffffff?text=WHIMSY"
+image: "https://placehold.co/1200x630/2e2a4a/ffffff/png?text=WHIMSY%0AAKARUMI+SONGS&font=montserrat"
 imageAlt: "WHIMSY特集のアイキャッチ"
 tags: ["注目バンド", "新人アーティスト", "邦楽", "RO JACK", "WHIMSY"]
 spotifyArtistId: "77UTjooagP3UWxEvK3uB6D"
