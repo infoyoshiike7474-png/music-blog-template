@@ -7,8 +7,21 @@ const isProd = import.meta.env.PROD;
 const posts = (await getCollection('posts', ({ data }) => !isProd || !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'AKARUMI SONGS',
+  url: new URL('/', Astro.site).toString(),
+  inLanguage: 'ja',
+  publisher: { '@type': 'Organization', name: 'AKARUMI MUSIC' },
+};
 ---
-<BaseLayout title="Home">
+<BaseLayout
+  title="AIが選ぶ注目の新人アーティスト特集・音楽コラム"
+  description="SNSやストリーミングのデータをもとにAIが選んだ、今注目したい新人アーティストの特集記事・音楽コラムを掲載。RO JACK優勝アーティストなども紹介しています。"
+  jsonLd={jsonLd}
+>
   <h1 class="text-2xl font-bold mb-2">AIが選ぶ、最新の注目記事</h1>
   <p class="text-sm text-neutral-500 mb-8">
     SNSやストリーミングのデータをもとに、AIが独自に選定・分析しています。

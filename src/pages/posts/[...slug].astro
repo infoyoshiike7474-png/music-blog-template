@@ -37,6 +37,7 @@ const formatted = pubDate.toLocaleDateString('ja-JP', {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': new URL(`/posts/${post.slug}/`, Astro.site).toString() },
   headline: title,
   description,
   image: image ? [image] : undefined,

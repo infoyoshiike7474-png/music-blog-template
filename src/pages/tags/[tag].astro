@@ -19,7 +19,10 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
-<BaseLayout title={`#${tag}`}>
+<BaseLayout
+  title={`「${tag}」の記事一覧`}
+  description={`「${tag}」に関するAKARUMI SONGSの記事一覧（${posts.length}件）。`}
+>
   <h1 class="text-2xl font-bold mb-8">#{tag}</h1>
   <div class="space-y-10">
     {posts.map((post) => (
