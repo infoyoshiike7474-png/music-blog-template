@@ -7,7 +7,7 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
-  jsonLd?: Record<string, unknown>;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   type?: 'website' | 'article';
   publishedTime?: string;
   modifiedTime?: string;
@@ -28,6 +28,7 @@ const siteName = 'AKARUMI SONGS';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 // 記事画像が無いページ（トップ・タグ一覧など）でもSNSカードが出るよう既定のOGP画像を使う
 const ogImage = image ?? 'https://placehold.co/1200x630/1a1a1a/ffffff/png?text=AKARUMI+SONGS&font=montserrat';
+const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 <!doctype html>
 <html lang="ja">
@@ -52,9 +53,9 @@ const ogImage = image ?? 'https://placehold.co/1200x630/1a1a1a/ffffff/png?text=A
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@akarumi_songs" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    {jsonLd && (
-      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-    )}
+    {jsonLdList.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
   </head>
   <body class="bg-white text-neutral-900 antialiased">
     <Header siteName={siteName} />
