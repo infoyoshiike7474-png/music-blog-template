@@ -14,7 +14,11 @@ const jsonLd = {
   name: 'AKARUMI SONGS',
   url: new URL('/', Astro.site).toString(),
   inLanguage: 'ja',
-  publisher: { '@type': 'Organization', name: 'AKARUMI MUSIC' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'AKARUMI MUSIC',
+    sameAs: ['https://x.com/akarumi_songs'],
+  },
 };
 ---
 <BaseLayout

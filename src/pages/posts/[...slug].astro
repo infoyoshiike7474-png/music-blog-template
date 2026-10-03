@@ -44,8 +44,8 @@ const jsonLd = {
   datePublished: pubDate.toISOString(),
   dateModified: (updatedDate ?? pubDate).toISOString(),
   keywords: tags.join(', '),
-  author: { '@type': 'Organization', name: 'AKARUMI MUSIC' },
-  publisher: { '@type': 'Organization', name: 'AKARUMI MUSIC' },
+  author: { '@type': 'Organization', name: 'AKARUMI MUSIC', sameAs: ['https://x.com/akarumi_songs'] },
+  publisher: { '@type': 'Organization', name: 'AKARUMI MUSIC', sameAs: ['https://x.com/akarumi_songs'] },
 };
 
 const breadcrumbLd = {
