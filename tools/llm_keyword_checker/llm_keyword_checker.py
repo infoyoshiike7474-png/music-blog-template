@@ -32,7 +32,7 @@ def post_json(url, body, headers=None, retries=3):
             if e.code in (429, 500, 503) and i < retries - 1:
                 time.sleep(10 * (i + 1))  # 無料枠のレート制限対策
                 continue
-            raise RuntimeError(f"HTTP {e.code}: {e.read().decode(errors='replace')[:300]}")
+            raise RuntimeError(f"HTTP {e.code}: {e.read().decode(errors='replace')[:800]}")
 
 
 def domain_of(url):
@@ -46,9 +46,10 @@ def ask_gemini(prompt, cfg):
         raise RuntimeError("GEMINI_API_KEY が未設定です")
     url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
            f"{cfg['gemini_model']}:generateContent")
-    res = post_json(url, {"contents": [{"parts": [{"text": prompt}]}],
-                          "tools": [{"google_search": {}}]},
-                    {"x-goog-api-key": key})
+    body = {"contents": [{"parts": [{"text": prompt}]}]}
+    if cfg.get("grounding", True):  # 無料枠では検索グラウンディングが429になることがある
+        body["tools"] = [{"google_search": {}}]
+    res = post_json(url, body, {"x-goog-api-key": key})
     cand = (res.get("candidates") or [{}])[0]
     text = "".join(p.get("text", "") for p in cand.get("content", {}).get("parts", []))
     sources = []
@@ -92,9 +93,12 @@ def main(argv=None):
     ap.add_argument("--providers", default="gemini")
     ap.add_argument("--out-dir", default="results")
     ap.add_argument("--sleep", type=float, default=5.0, help="リクエスト間隔(秒)")
+    ap.add_argument("--no-grounding", action="store_true", help="検索グラウンディングを使わない(無料枠向け)")
     a = ap.parse_args(argv)
 
     cfg = json.loads(Path(a.config).read_text(encoding="utf-8"))
+    if a.no_grounding:
+        cfg["grounding"] = False
     results = []
     for prov in a.providers.split(","):
         fn = PROVIDERS[prov.strip()]
