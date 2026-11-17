@@ -2,7 +2,7 @@
 title: "ミーマイナーとは何者か。女子大生シンガーとボカロPが結成、メジャー1st EP『部屋とガラクタと私』でアニメEDも担当"
 description: "2024年9月結成、女子大生シンガーソングライター美咲とボカロP出身のさすけを中心に始動したミーマイナー。4人体制でのメジャーデビュー、アニメEDテーマ起用までを紹介する。"
 pubDate: 2026-11-17
-image: "https://placehold.co/1200x630/3a2d4a/ffffff/png?text=%E3%83%9F%E3%83%BC%E3%83%9E%E3%82%A4%E3%83%8A%E3%83%BC%0AAKARUMI+SONGS&font=montserrat"
+image: "https://placehold.co/1200x630/3a2d4a/ffffff/png?text=MEminor%0AAKARUMI+SONGS&font=montserrat"
 imageAlt: "ミーマイナー特集のアイキャッチ"
 tags: ["注目バンド", "新人アーティスト", "邦ロック", "メジャーデビュー", "ミーマイナー"]
 spotifyArtistId: "7G8KRjagUdAsleZIfe2juo"
