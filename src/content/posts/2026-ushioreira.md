@@ -2,7 +2,7 @@
 title: "汐れいらとは何者か。恋愛番組での口コミバズから、メジャーデビュー、アニメタイアップまでの軌跡"
 description: "2002年生まれのシンガーソングライター汐れいら。恋愛リアリティー番組のBGM起用で話題を呼んだ「センチメンタル・キス」から、2023年のメジャーデビュー、アニメ『薫る花は凛と咲く』タイアップ曲までを紹介する。"
 pubDate: 2026-11-18
-image: "https://placehold.co/1200x630/1a3a5c/ffffff/png?text=%E6%B1%90%E3%82%8C%E3%81%84%E3%82%89%0AAKARUMI+SONGS&font=montserrat"
+image: "https://placehold.co/1200x630/1a3a5c/ffffff/png?text=Reira+Ushio%0AAKARUMI+SONGS&font=montserrat"
 imageAlt: "汐れいら特集のアイキャッチ"
 tags: ["シンガーソングライター", "邦楽", "アニメタイアップ", "メジャーデビュー", "汐れいら"]
 spotifyArtistId: "6GVsZoMbMt0jmqwcvz1a1F"
